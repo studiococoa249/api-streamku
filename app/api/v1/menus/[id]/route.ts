@@ -9,8 +9,8 @@ let menusStore: Array<{
   order: number;
 }> = [
   { id: "1", label: "Home", href: "/", order: 0 },
-  { id: "2", label: "Dashboard", href: "/pages/dashboard", order: 1 },
-  { id: "3", label: "API Docs", href: "/pages/docs", order: 2 },
+  { id: "2", label: "Dashboard", href: "/dashboard", order: 1 },
+  { id: "3", label: "API Docs", href: "/docs", order: 2 },
 ];
 
 export async function PUT(
