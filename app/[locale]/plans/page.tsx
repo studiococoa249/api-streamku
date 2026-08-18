@@ -43,7 +43,7 @@ export default async function PlansPage({ params }: { params: Promise<{ locale: 
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 items-center max-w-6xl mx-auto">
-          {plans.map((plan, index) => {
+          {plans.map((plan: { id: string; name: string; priceUsd: unknown; priceIdr: unknown; requestLimit: number; bandwithLimitPerDay: number; expired: number }, index: number) => {
             const isPopular = index === 1; // Mark the second plan as popular visually
             
             return (

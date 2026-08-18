@@ -32,7 +32,7 @@ export async function GET(
       return apiResponse(null, "Movie not found", 404);
     }
 
-    const cleanedUrls = movie.movieUrls.map(urlObj => 
+    const cleanedUrls = movie.movieUrls.map((urlObj: Record<string, unknown>) => 
       Object.fromEntries(Object.entries(urlObj).filter(([_, v]) => v !== null))
     );
 
