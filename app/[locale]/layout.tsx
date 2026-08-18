@@ -15,10 +15,19 @@ const poppins = Poppins({
   weight: ["400", "500", "600", "700", "800"],
 });
 
-export const metadata: Metadata = {
-  title: "DB Movie",
-  description: "Streaming movie, drama, short drama, dan anime dengan tampilan modern.",
-};
+import { headers } from "next/headers";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const headersList = await headers();
+  const host = headersList.get("x-forwarded-host") || headersList.get("host") || "localhost:3000";
+  const protocol = headersList.get("x-forwarded-proto") || (host.includes("localhost") ? "http" : "https");
+
+  return {
+    title: "DB Movie",
+    description: "Streaming movie, drama, short drama, dan anime dengan tampilan modern.",
+    metadataBase: new URL(`${protocol}://${host}`),
+  };
+}
 
 export default async function RootLayout({
   children,

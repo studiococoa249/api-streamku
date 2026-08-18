@@ -1,14 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter, usePathname, Link } from "@/i18n/routing";
+import LandingNavbar from "@/app/components/LandingNavbar";
 
-function CodeSnippet({ method, route }: { method: string; route: string }) {
+function CodeSnippet({ method, route, sampleResponse }: { method: string; route: string; sampleResponse?: string }) {
   const [activeTab, setActiveTab] = useState("cURL");
   
-  const baseUrl = "https://api.dbmovie.com";
+  const [baseUrl, setBaseUrl] = useState("https://api.dbmovie.com");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setBaseUrl(window.location.origin);
+    }
+  }, []);
+
   const fullUrl = `${baseUrl}${route}`;
   
   const snippets = {
@@ -44,7 +52,12 @@ print(response.json())`,
   .catch(err => console.error(err));`
   };
 
-  const tabs = Object.keys(snippets);
+  const snippetsWithResponse: Record<string, string> = { ...snippets };
+  if (sampleResponse) {
+    snippetsWithResponse["Response"] = sampleResponse;
+  }
+
+  const tabs = Object.keys(snippetsWithResponse);
 
   return (
     <div className="mt-4 rounded-xl border border-white/10 bg-[#0d0d12] overflow-hidden">
@@ -65,7 +78,7 @@ print(response.json())`,
       </div>
       <div className="p-4 overflow-x-auto">
         <pre className="text-[13px] text-zinc-300 font-mono leading-relaxed">
-          {snippets[activeTab as keyof typeof snippets]}
+          {snippetsWithResponse[activeTab]}
         </pre>
       </div>
     </div>
@@ -93,39 +106,35 @@ export default function DocsPage() {
   ];
 
   const movieEndpoints = [
-    { id: "movie-trending", title: "Trending", method: "GET", route: "/v1/movie/trending", description: t("docs.movieTrending") },
-    { id: "movie-search", title: "Search", method: "GET", route: "/v1/movie/search?q=", description: t("docs.movieSearch") },
-    { id: "movie-film", title: "Film", method: "GET", route: "/v1/movie/id=$input_id/", description: t("docs.movieDetail") },
-    { id: "movie-stream-url", title: "Stream URL", method: "GET", route: "/v1/movie/id=$input_id/stream", description: t("docs.movieStream") },
+    { id: "movie-trending", title: "Trending", method: "GET", route: "/v1/movie/trending", description: t("docs.movieTrending"), sampleResponse: JSON.stringify({ data: [{ id: "cm...", movieName: "Inception", coverImageUrl: "https://...", year: 2010 }], message: "List of trending movies" }, null, 2) },
+    { id: "movie-search", title: "Search", method: "GET", route: "/v1/movie/search?q=", description: t("docs.movieSearch"), sampleResponse: JSON.stringify({ data: [{ id: "cm...", movieName: "Inception", coverImageUrl: "https://...", year: 2010 }], message: "Search results for 'Inception'" }, null, 2) },
+    { id: "movie-film", title: "Film", method: "GET", route: "/v1/movie/id=$input_id/", description: t("docs.movieDetail"), sampleResponse: JSON.stringify({ data: { id: "cm...", movieName: "Inception", desc: "...", coverImageUrl: "https://...", year: 2010, trailerUrl: "https://..." }, message: "Movie details retrieved successfully" }, null, 2) },
+    { id: "movie-stream-url", title: "Stream URL", method: "GET", route: "/v1/movie/id=$input_id/stream", description: t("docs.movieStream"), sampleResponse: JSON.stringify({ data: { streamUrls: ["https://stream1...", "https://stream2..."] }, message: "Stream URLs retrieved successfully" }, null, 2) },
   ];
 
   const serialEndpoints = [
-    { id: "serial-trending", title: "Trending", method: "GET", route: "/v1/serial/trending", description: t("docs.serialTrending") },
-    { id: "serial-search", title: "Search", method: "GET", route: "/v1/serial/search?q=", description: t("docs.serialSearch") },
-    { id: "serial-serial", title: "Serial", method: "GET", route: "/v1/serial/id=$input_id/", description: t("docs.serialDetail") },
-    { id: "serial-stream-url", title: "Stream URL", method: "GET", route: "/v1/serial/id=$input_id/episode/:ep/stream", description: t("docs.serialStream") },
+    { id: "serial-trending", title: "Trending", method: "GET", route: "/v1/serial/trending", description: t("docs.serialTrending"), sampleResponse: JSON.stringify({ data: [{ id: "cm...", serialName: "Breaking Bad", coverImageUrl: "https://...", year: 2008 }], message: "List of trending serials" }, null, 2) },
+    { id: "serial-search", title: "Search", method: "GET", route: "/v1/serial/search?q=", description: t("docs.serialSearch"), sampleResponse: JSON.stringify({ data: [{ id: "cm...", serialName: "Breaking Bad", coverImageUrl: "https://...", year: 2008 }], message: "Search results for 'Breaking'" }, null, 2) },
+    { id: "serial-serial", title: "Serial", method: "GET", route: "/v1/serial/id=$input_id/", description: t("docs.serialDetail"), sampleResponse: JSON.stringify({ data: { id: "cm...", serialName: "Breaking Bad", desc: "...", coverImageUrl: "https://...", year: 2008, trailerUrl: "https://...", episodes: [{ id: "ep1", title: "Pilot", episodeNumber: 1, seasonNumber: 1 }] }, message: "Serial details retrieved successfully" }, null, 2) },
+    { id: "serial-stream-url", title: "Stream URL", method: "GET", route: "/v1/serial/id=$input_id/episode/:ep/stream", description: t("docs.serialStream"), sampleResponse: JSON.stringify({ data: { streamUrls: ["https://stream1...", "https://stream2..."] }, message: "Stream URLs retrieved successfully" }, null, 2) },
+  ];
+
+  const liveTvEndpoints = [
+    { id: "livetv-country", title: "Country", method: "GET", route: "/v1/livetv/country", description: t("docs.liveTvCountry"), sampleResponse: JSON.stringify({ data: [{ id: "cm...", name: "Indonesia", slug: "indonesia" }], message: "List of all IPTV countries" }, null, 2) },
+    { id: "livetv-category", title: "Category", method: "GET", route: "/v1/livetv/category", description: t("docs.liveTvCategory"), sampleResponse: JSON.stringify({ data: [{ id: "cm...", name: "Sports", slug: "sports" }], message: "List of all IPTV categories" }, null, 2) },
+    { id: "livetv-search", title: "Search", method: "GET", route: "/v1/livetv/search?q=", description: t("docs.liveTvSearch"), sampleResponse: JSON.stringify({ data: [{ id: "cm...", name: "CNN", slug: "cnn", coverUrl: "https://...", country: { id: "...", name: "USA", slug: "usa" }, category: { id: "...", name: "News", slug: "news" } }], message: "Search results for 'CNN'" }, null, 2) },
+    { id: "livetv-list", title: "Live TV", method: "GET", route: "/v1/livetv?country=&category=", description: t("docs.liveTvList"), sampleResponse: JSON.stringify({ data: { data: [{ id: "cm...", name: "CNN", slug: "cnn", coverUrl: "https://...", country: { id: "...", name: "USA", slug: "usa" }, category: { id: "...", name: "News", slug: "news" } }], meta: { total: 1, page: 1, limit: 20, totalPages: 1 } }, message: "List of Live TV streams" }, null, 2) },
+    { id: "livetv-stream", title: "Stream URL", method: "GET", route: "/v1/livetv/id=$input_id/stream", description: t("docs.liveTvStream"), sampleResponse: JSON.stringify({ data: { streamUrls: ["https://stream1...", "https://stream2..."] }, message: "Stream URLs retrieved successfully" }, null, 2) },
   ];
 
   return (
-    <main className="min-h-screen bg-[#0b0b0f] text-white">
-      {/* Mobile Header */}
-      <div className="sticky top-0 z-40 flex items-center justify-between border-b border-white/5 bg-[#0b0b0f]/80 px-4 py-4 backdrop-blur-md lg:hidden">
+    <div className="min-h-screen bg-[#0b0b0f] text-white">
+      <LandingNavbar isDocs={true} />
+      <main>
+        {/* Mobile Header */}
+        <div className="sticky top-16 z-40 flex items-center justify-between border-b border-white/5 bg-[#0b0b0f]/80 px-4 py-4 backdrop-blur-md lg:hidden mt-16">
         <span className="font-display text-lg font-bold">{t("title")}</span>
         <div className="flex items-center gap-2">
-          <select 
-            value={locale} 
-            onChange={(e) => router.replace(pathname, { locale: e.target.value })}
-            className="bg-transparent text-zinc-400 text-xs font-medium border border-white/10 rounded-md px-1 py-1 outline-none focus:border-red-500 transition-colors cursor-pointer"
-          >
-            <option value="en" className="bg-[#050505] text-white">EN</option>
-            <option value="id" className="bg-[#050505] text-white">ID</option>
-            <option value="nl" className="bg-[#050505] text-white">NL</option>
-            <option value="ja" className="bg-[#050505] text-white">JA</option>
-            <option value="zh" className="bg-[#050505] text-white">ZH</option>
-            <option value="ar" className="bg-[#050505] text-white">AR</option>
-            <option value="de" className="bg-[#050505] text-white">DE</option>
-            <option value="af" className="bg-[#050505] text-white">AF</option>
-          </select>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="rounded-lg p-2 text-zinc-400 hover:bg-white/5 hover:text-white"
@@ -135,12 +144,12 @@ export default function DocsPage() {
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-[90rem]">
+      <div className="mx-auto flex max-w-[90rem] pt-16 lg:pt-20">
         {/* Sidebar */}
         <aside
           className={`${
-            mobileMenuOpen ? "fixed inset-0 top-[65px] z-30 block bg-[#0b0b0f]" : "hidden"
-          } w-full overflow-y-auto border-r border-white/5 lg:sticky lg:top-0 lg:block lg:h-screen lg:w-72 lg:shrink-0`}
+            mobileMenuOpen ? "fixed inset-0 top-[130px] z-30 block bg-[#0b0b0f]" : "hidden"
+          } w-full overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] border-r border-white/5 lg:sticky lg:top-16 lg:block lg:h-[calc(100vh-64px)] lg:w-72 lg:shrink-0`}
         >
           <div className="px-6 py-8">
             <div className="hidden lg:flex items-center justify-between mb-8">
@@ -199,6 +208,21 @@ export default function DocsPage() {
                 </h3>
                 <ul className="space-y-2">
                   {serialEndpoints.map((ep) => (
+                    <li key={ep.id}>
+                      <a href={`#${ep.id}`} className="block rounded-lg px-3 py-2 text-sm text-zinc-400 transition hover:bg-white/5 hover:text-white">
+                        {ep.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
+                  {t("nav.liveTv")}
+                </h3>
+                <ul className="space-y-2">
+                  {liveTvEndpoints.map((ep) => (
                     <li key={ep.id}>
                       <a href={`#${ep.id}`} className="block rounded-lg px-3 py-2 text-sm text-zinc-400 transition hover:bg-white/5 hover:text-white">
                         {ep.title}
@@ -268,7 +292,7 @@ export default function DocsPage() {
                       </div>
                       <div className="p-5 text-sm text-zinc-300 leading-relaxed">
                         <p className="mb-4">{ep.description}</p>
-                        <CodeSnippet method={ep.method} route={ep.route} />
+                        <CodeSnippet method={ep.method} route={ep.route} sampleResponse={ep.sampleResponse} />
                       </div>
                     </div>
                   </section>
@@ -299,7 +323,38 @@ export default function DocsPage() {
                       </div>
                       <div className="p-5 text-sm text-zinc-300 leading-relaxed">
                         <p className="mb-4">{ep.description}</p>
-                        <CodeSnippet method={ep.method} route={ep.route} />
+                        <CodeSnippet method={ep.method} route={ep.route} sampleResponse={ep.sampleResponse} />
+                      </div>
+                    </div>
+                  </section>
+                ))}
+              </div>
+
+              <hr className="border-white/5" />
+
+              {/* Live TV Section */}
+              <div className="space-y-12">
+                <div className="mb-8">
+                  <h2 className="font-display text-3xl font-bold text-emerald-400">Live TV API</h2>
+                  <p className="mt-2 text-zinc-400">{t("sections.liveTvDesc")}</p>
+                </div>
+
+                {liveTvEndpoints.map((ep) => (
+                  <section key={ep.id} id={ep.id} className="scroll-mt-24">
+                    <h3 className="group flex items-center font-display text-xl font-bold text-white">
+                      <a href={`#${ep.id}`} className="absolute -ml-8 hidden text-zinc-500 opacity-0 transition-opacity group-hover:opacity-100 lg:block">#</a>
+                      {ep.title}
+                    </h3>
+                    <div className="mt-5 rounded-2xl border border-white/5 bg-[#111318] shadow-lg overflow-hidden">
+                      <div className="flex items-center gap-4 border-b border-white/5 bg-white/[0.02] p-4">
+                        <span className="flex w-14 items-center justify-center rounded-md bg-emerald-500/10 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-400">
+                          {ep.method}
+                        </span>
+                        <code className="font-mono text-sm text-zinc-200 break-all">{ep.route}</code>
+                      </div>
+                      <div className="p-5 text-sm text-zinc-300 leading-relaxed">
+                        <p className="mb-4">{ep.description}</p>
+                        <CodeSnippet method={ep.method} route={ep.route} sampleResponse={ep.sampleResponse} />
                       </div>
                     </div>
                   </section>
@@ -310,6 +365,7 @@ export default function DocsPage() {
           </div>
         </div>
       </div>
-    </main>
+      </main>
+    </div>
   );
 }

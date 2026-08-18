@@ -8,7 +8,9 @@
       "dashboard": "Dashboard",
       "logout": "Abmelden",
       "signIn": "Anmelden",
-      "getStarted": "Loslegen"
+      "getStarted": "Loslegen",
+      "plans": "Pläne",
+      "home": "Startseite"
     },
     "hero": {
       "apiLive": "API v1 ist jetzt live",
@@ -71,7 +73,8 @@
     "nav": {
       "gettingStarted": "Erste Schritte",
       "movie": "Film",
-      "serial": "Serie"
+      "serial": "Serie",
+      "liveTv": "Live-TV"
     },
     "header": {
       "title": "API-Referenz",
@@ -79,7 +82,8 @@
     },
     "sections": {
       "movieDesc": "Endpunkte zum Verwalten und Abrufen von Filmdaten.",
-      "serialDesc": "Endpunkte zum Verwalten und Abrufen von Serien-/Dramadaten."
+      "serialDesc": "Endpunkte zum Verwalten und Abrufen von Serien-/Dramadaten.",
+      "liveTvDesc": "Endpunkte zur Verwaltung und zum Abruf von Live-TV-/IPTV-Daten."
     },
     "docs": {
       "auth": "Alle API-Anfragen müssen den Authorization-Header im Format Bearer YOUR_API_KEY verwenden.",
@@ -91,7 +95,23 @@
       "serialTrending": "Holen Sie sich eine Liste von angesagten Serien/Dramen.",
       "serialSearch": "Suchen Sie Serien/Dramen nach Titel.",
       "serialDetail": "Holen Sie sich Details zu einer Serie/einem Drama.",
-      "serialStream": "Holen Sie sich eine Liste von Streaming-Server-URLs für eine bestimmte Episode."
+      "serialStream": "Holen Sie sich eine Liste von Streaming-Server-URLs für eine bestimmte Episode.",
+      "liveTvCountry": "Holen Sie sich eine Liste aller verfügbaren Länder für Live-TV.",
+      "liveTvCategory": "Holen Sie sich eine Liste aller verfügbaren Kategorien für Live-TV.",
+      "liveTvSearch": "Suchen Sie Live-TV-Streams nach Namen.",
+      "liveTvList": "Holen Sie sich eine Liste der Live-TV-Streams. Kann nach Länder- und Kategorie-Slugs gefiltert werden.",
+      "liveTvStream": "Holen Sie sich eine Liste von Streaming-Server-URLs für einen bestimmten Live-TV-Stream."
     }
+  },
+  "PlansPage": {
+    "title": "Einfache, Transparente ",
+    "titleHighlight": "Preise",
+    "desc": "Wählen Sie den Plan, der am besten zu Ihren Anforderungen passt. Wir decken alles ab.",
+    "perMonth": " / monat",
+    "mostPopular": "Beliebteste",
+    "featureRequests": "API-Anfragen / Monat",
+    "featureBandwidth": "MB Bandbreite pro Tag",
+    "featureDuration": "Tage Dauer",
+    "buttonSelect": "Plan auswählen"
   }
 }

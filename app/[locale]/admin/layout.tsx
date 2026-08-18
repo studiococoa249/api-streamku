@@ -11,6 +11,8 @@ import {
   ClockIcon,
   Bars3Icon,
   XMarkIcon,
+  ChevronDownIcon,
+  TvIcon,
 } from "@heroicons/react/24/outline";
 
 const navItems = [
@@ -24,6 +26,7 @@ const navItems = [
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [iptvOpen, setIptvOpen] = useState(false);
 
   return (
     <div className="flex min-h-screen bg-[#0b0b0f] text-white">
@@ -80,6 +83,53 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               </Link>
             );
           })}
+
+          <div className="pt-2">
+            <button
+              onClick={() => setIptvOpen(!iptvOpen)}
+              className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200 ${
+                pathname.includes("/admin/iptv")
+                  ? "bg-red-600/15 text-red-400 shadow-sm shadow-red-600/10"
+                  : "text-zinc-400 hover:bg-white/5 hover:text-zinc-200"
+              }`}
+            >
+              <TvIcon
+                className={`h-5 w-5 flex-shrink-0 ${
+                  pathname.includes("/admin/iptv") ? "text-red-400" : "text-zinc-500"
+                }`}
+              />
+              IPTV Management
+              <ChevronDownIcon
+                className={`ml-auto h-4 w-4 transition-transform ${iptvOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {iptvOpen && (
+              <div className="mt-1 space-y-1 pl-11 pr-3">
+                {[
+                  { label: "Countries", href: "/admin/iptv/country" },
+                  { label: "Categories", href: "/admin/iptv/category" },
+                  { label: "Streams", href: "/admin/iptv/stream" },
+                ].map((item) => {
+                  const isActive =
+                    pathname === item.href || pathname.startsWith(item.href + "/");
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setSidebarOpen(false)}
+                      className={`block rounded-lg px-3 py-2 text-sm transition-colors ${
+                        isActive
+                          ? "font-medium text-red-400"
+                          : "text-zinc-400 hover:text-white"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+          </div>
         </nav>
 
         {/* Footer */}

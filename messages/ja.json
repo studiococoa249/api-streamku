@@ -8,7 +8,9 @@
       "dashboard": "ダッシュボード",
       "logout": "ログアウト",
       "signIn": "サインイン",
-      "getStarted": "始める"
+      "getStarted": "始める",
+      "plans": "プラン",
+      "home": "ホーム"
     },
     "hero": {
       "apiLive": "API v1がライブになりました",
@@ -71,7 +73,8 @@
     "nav": {
       "gettingStarted": "はじめる",
       "movie": "映画",
-      "serial": "シリアル"
+      "serial": "シリアル",
+      "liveTv": "ライブTV"
     },
     "header": {
       "title": "APIリファレンス",
@@ -79,7 +82,8 @@
     },
     "sections": {
       "movieDesc": "映画データを管理および取得するために使用されるエンドポイント。",
-      "serialDesc": "シリアル/ドラマデータを管理および取得するために使用されるエンドポイント。"
+      "serialDesc": "シリアル/ドラマデータを管理および取得するために使用されるエンドポイント。",
+      "liveTvDesc": "ライブTV/IPTVデータを管理および取得するために使用されるエンドポイント。"
     },
     "docs": {
       "auth": "すべてのAPIリクエストは、Bearer YOUR_API_KEY形式のAuthorizationヘッダーを使用する必要があります。",
@@ -91,7 +95,23 @@
       "serialTrending": "トレンドのシリアル/ドラマのリストを取得します。",
       "serialSearch": "タイトルでシリアル/ドラマを検索します。",
       "serialDetail": "シリアル/ドラマの詳細を取得します。",
-      "serialStream": "特定のエピソードのストリーミングサーバーURLのリストを取得します。"
+      "serialStream": "特定のエピソードのストリーミングサーバーURLのリストを取得します。",
+      "liveTvCountry": "ライブTVで利用可能なすべての国のリストを取得します。",
+      "liveTvCategory": "ライブTVで利用可能なすべてのカテゴリのリストを取得します。",
+      "liveTvSearch": "名前でライブTVストリームを検索します。",
+      "liveTvList": "ライブTVストリームのリストを取得します。国とカテゴリのスラグでフィルタリングできます。",
+      "liveTvStream": "特定のライブTVストリームのストリーミングサーバーURLのリストを取得します。"
     }
+  },
+  "PlansPage": {
+    "title": "シンプルで透明な ",
+    "titleHighlight": "価格",
+    "desc": "ニーズに最適なプランを選択してください。始めたばかりでもグローバルに展開していても、対応します。",
+    "perMonth": " / 月",
+    "mostPopular": "最も人気",
+    "featureRequests": "APIリクエスト / 月",
+    "featureBandwidth": "1日あたりのMB帯域幅",
+    "featureDuration": "日間",
+    "buttonSelect": "プランを選択"
   }
 }

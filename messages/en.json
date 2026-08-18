@@ -8,7 +8,9 @@
       "dashboard": "Dashboard",
       "logout": "Logout",
       "signIn": "Sign In",
-      "getStarted": "Get Started"
+      "getStarted": "Get Started",
+      "plans": "Plans",
+      "home": "Home"
     },
     "hero": {
       "apiLive": "API v1 is now live",
@@ -71,7 +73,8 @@
     "nav": {
       "gettingStarted": "Getting Started",
       "movie": "Movie",
-      "serial": "Serial"
+      "serial": "Serial",
+      "liveTv": "Live TV"
     },
     "header": {
       "title": "API Reference",
@@ -79,7 +82,8 @@
     },
     "sections": {
       "movieDesc": "Endpoints used to manage and fetch Movie data.",
-      "serialDesc": "Endpoints used to manage and fetch Serial / Drama data."
+      "serialDesc": "Endpoints used to manage and fetch Serial / Drama data.",
+      "liveTvDesc": "Endpoints used to manage and fetch Live TV / IPTV data."
     },
     "docs": {
       "auth": "All API requests need to use the Authorization header with the Bearer YOUR_API_KEY format.",
@@ -91,7 +95,23 @@
       "serialTrending": "Get a list of trending serials/dramas.",
       "serialSearch": "Search for serials/dramas by title.",
       "serialDetail": "Get details of a serial/drama.",
-      "serialStream": "Get a list of streaming server URLs for a specific episode."
+      "serialStream": "Get a list of streaming server URLs for a specific episode.",
+      "liveTvCountry": "Get a list of all available countries for Live TV.",
+      "liveTvCategory": "Get a list of all available categories for Live TV.",
+      "liveTvSearch": "Search Live TV streams by name.",
+      "liveTvList": "Get a list of Live TV streams. Can be filtered by country and category slugs.",
+      "liveTvStream": "Get a list of streaming server URLs for a specific Live TV stream."
     }
+  },
+  "PlansPage": {
+    "title": "Simple, Transparent ",
+    "titleHighlight": "Pricing",
+    "desc": "Choose the plan that best fits your needs. Whether you're just starting out or scaling globally, we have you covered.",
+    "perMonth": " / month",
+    "mostPopular": "Most Popular",
+    "featureRequests": "API requests / month",
+    "featureBandwidth": "MB bandwidth per day",
+    "featureDuration": "Days duration",
+    "buttonSelect": "Choose Plan"
   }
 }

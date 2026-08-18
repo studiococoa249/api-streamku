@@ -8,7 +8,9 @@
       "dashboard": "Dasbor",
       "logout": "Keluar",
       "signIn": "Masuk",
-      "getStarted": "Mulai"
+      "getStarted": "Mulai",
+      "plans": "Paket",
+      "home": "Beranda"
     },
     "hero": {
       "apiLive": "API v1 sekarang live",
@@ -71,7 +73,8 @@
     "nav": {
       "gettingStarted": "Mulai",
       "movie": "Film",
-      "serial": "Serial"
+      "serial": "Serial",
+      "liveTv": "Live TV"
     },
     "header": {
       "title": "Referensi API",
@@ -79,7 +82,8 @@
     },
     "sections": {
       "movieDesc": "Endpoint yang digunakan untuk mengelola dan mengambil data Film.",
-      "serialDesc": "Endpoint yang digunakan untuk mengelola dan mengambil data Serial / Drama."
+      "serialDesc": "Endpoint yang digunakan untuk mengelola dan mengambil data Serial / Drama.",
+      "liveTvDesc": "Endpoint yang digunakan untuk mengelola dan mengambil data Live TV / IPTV."
     },
     "docs": {
       "auth": "Semua request API perlu menggunakan header Authorization dengan format Bearer YOUR_API_KEY.",
@@ -91,7 +95,23 @@
       "serialTrending": "Mendapatkan daftar serial/drama yang sedang trending.",
       "serialSearch": "Mencari serial/drama berdasarkan judul.",
       "serialDetail": "Mendapatkan detail dari sebuah serial/drama.",
-      "serialStream": "Mendapatkan daftar URL server streaming untuk episode spesifik."
+      "serialStream": "Mendapatkan daftar URL server streaming untuk episode spesifik.",
+      "liveTvCountry": "Mendapatkan daftar semua negara yang tersedia untuk Live TV.",
+      "liveTvCategory": "Mendapatkan daftar semua kategori yang tersedia untuk Live TV.",
+      "liveTvSearch": "Mencari streaming Live TV berdasarkan nama.",
+      "liveTvList": "Mendapatkan daftar Live TV. Bisa difilter berdasarkan slug negara dan kategori.",
+      "liveTvStream": "Mendapatkan daftar URL server streaming untuk Live TV spesifik."
     }
+  },
+  "PlansPage": {
+    "title": "Harga Simpel & ",
+    "titleHighlight": "Transparan",
+    "desc": "Pilih paket yang paling sesuai dengan kebutuhan Anda. Dari coba-coba hingga skala global, kami siap melayani.",
+    "perMonth": " / bulan",
+    "mostPopular": "Paling Populer",
+    "featureRequests": "Permintaan API / bulan",
+    "featureBandwidth": "MB bandwidth per hari",
+    "featureDuration": "Hari durasi aktif",
+    "buttonSelect": "Pilih Paket"
   }
 }

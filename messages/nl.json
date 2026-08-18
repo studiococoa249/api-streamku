@@ -8,7 +8,9 @@
       "dashboard": "Dashboard",
       "logout": "Uitloggen",
       "signIn": "Aanmelden",
-      "getStarted": "Beginnen"
+      "getStarted": "Beginnen",
+      "plans": "Plannen",
+      "home": "Thuis"
     },
     "hero": {
       "apiLive": "API v1 is nu live",
@@ -71,7 +73,8 @@
     "nav": {
       "gettingStarted": "Aan de slag",
       "movie": "Film",
-      "serial": "Serie"
+      "serial": "Serie",
+      "liveTv": "Live TV"
     },
     "header": {
       "title": "API-referentie",
@@ -79,7 +82,8 @@
     },
     "sections": {
       "movieDesc": "Eindpunten om filmgegevens te beheren en op te halen.",
-      "serialDesc": "Eindpunten om serie-/dramagegevens te beheren en op te halen."
+      "serialDesc": "Eindpunten om serie-/dramagegevens te beheren en op te halen.",
+      "liveTvDesc": "Eindpunten die worden gebruikt om Live TV / IPTV-gegevens te beheren en op te halen."
     },
     "docs": {
       "auth": "Alle API-verzoeken moeten de Authorization header gebruiken met het formaat Bearer YOUR_API_KEY.",
@@ -91,7 +95,23 @@
       "serialTrending": "Krijg een lijst met populaire series/drama's.",
       "serialSearch": "Zoek naar series/drama's op titel.",
       "serialDetail": "Ontvang details van een serie/drama.",
-      "serialStream": "Krijg een lijst met streaming server-URL's voor een specifieke aflevering."
+      "serialStream": "Krijg een lijst met streaming server-URL's voor een specifieke aflevering.",
+      "liveTvCountry": "Krijg een lijst met alle beschikbare landen voor Live TV.",
+      "liveTvCategory": "Krijg een lijst met alle beschikbare categorieën voor Live TV.",
+      "liveTvSearch": "Zoek Live TV-streams op naam.",
+      "liveTvList": "Ontvang een lijst met Live TV-streams. Kan worden gefilterd op land- en categorieslugs.",
+      "liveTvStream": "Krijg een lijst met streaming server-URL's voor een specifieke Live TV-stream."
     }
+  },
+  "PlansPage": {
+    "title": "Eenvoudige, Transparante ",
+    "titleHighlight": "Prijzen",
+    "desc": "Kies het plan dat het beste bij u past. Of u nu net begint of wereldwijd schaalt, wij hebben u gedekt.",
+    "perMonth": " / maand",
+    "mostPopular": "Meest Populair",
+    "featureRequests": "API-verzoeken / maand",
+    "featureBandwidth": "MB bandbreedte per dag",
+    "featureDuration": "Dagen duur",
+    "buttonSelect": "Kies Plan"
   }
 }

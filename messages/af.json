@@ -8,7 +8,9 @@
       "dashboard": "Paneelbord",
       "logout": "Teken uit",
       "signIn": "Teken in",
-      "getStarted": "Begin"
+      "getStarted": "Begin",
+      "plans": "Planne",
+      "home": "Tuis"
     },
     "hero": {
       "apiLive": "API v1 is nou regstreeks",
@@ -71,7 +73,8 @@
     "nav": {
       "gettingStarted": "Aan die gang",
       "movie": "Fliek",
-      "serial": "Reeks"
+      "serial": "Reeks",
+      "liveTv": "Regstreekse TV"
     },
     "header": {
       "title": "API-verwysing",
@@ -79,7 +82,8 @@
     },
     "sections": {
       "movieDesc": "Eindpunte wat gebruik word om fliekdata te bestuur en te gaan haal.",
-      "serialDesc": "Eindpunte wat gebruik word om reeks-/dramadata te bestuur en te gaan haal."
+      "serialDesc": "Eindpunte wat gebruik word om reeks-/dramadata te bestuur en te gaan haal.",
+      "liveTvDesc": "Eindpunte wat gebruik word om Regstreekse TV / IPTV-data te bestuur en te gaan haal."
     },
     "docs": {
       "auth": "Alle API-versoeke moet die Authorization-opskrif met die Bearer YOUR_API_KEY-formaat gebruik.",
@@ -91,7 +95,23 @@
       "serialTrending": "Kry 'n lys van gewilde reekse/dramas.",
       "serialSearch": "Soek reekse/dramas volgens titel.",
       "serialDetail": "Kry besonderhede van 'n reeks/drama.",
-      "serialStream": "Kry 'n lys van stroombediener-URL's vir 'n spesifieke episode."
+      "serialStream": "Kry 'n lys van stroombediener-URL's vir 'n spesifieke episode.",
+      "liveTvCountry": "Kry 'n lys van alle beskikbare lande vir Regstreekse TV.",
+      "liveTvCategory": "Kry 'n lys van alle beskikbare kategorieë vir Regstreekse TV.",
+      "liveTvSearch": "Soek Regstreekse TV-strome by naam.",
+      "liveTvList": "Kry 'n lys van Regstreekse TV-strome. Kan gefiltreer word volgens land- en kategorie-slakke.",
+      "liveTvStream": "Kry 'n lys van stroombediener-URL's vir 'n spesifieke Regstreekse TV-stroom."
     }
+  },
+  "PlansPage": {
+    "title": "Eenvoudige, Deursigtige ",
+    "titleHighlight": "Pryse",
+    "desc": "Kies die plan wat die beste by u behoeftes pas.",
+    "perMonth": " / maand",
+    "mostPopular": "Gewildste",
+    "featureRequests": "API-versoeke / maand",
+    "featureBandwidth": "MB bandwydte per dag",
+    "featureDuration": "Dae duur",
+    "buttonSelect": "Kies Plan"
   }
 }

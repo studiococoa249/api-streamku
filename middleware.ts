@@ -15,7 +15,7 @@ export const config = {
 
     // Enable redirects that add a locale prefix to requests
     // Example: /docs -> /en/docs
-    // Exclude api, _next, and static files
-    '/((?!api|_next|_vercel|.*\\..*).*)'
+    // Exclude api, v1, _next, and static files
+    '/((?!api|v1|_next|_vercel|.*\\..*).*)'
   ]
 };
