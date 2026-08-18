@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { checkAuth, apiResponse } from "../../lib/api-auth";
+import { checkAuth, apiResponse } from "@/lib/api-auth";
 import { NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {
