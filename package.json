@@ -19,7 +19,6 @@
     "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@swc/core-win32-x64-msvc": "^1.16.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
