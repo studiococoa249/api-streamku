@@ -2,7 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
-import { MovieType } from "@/app/generated/prisma";
+import { MovieType } from "@/app/generated/prisma/client";
 
 export interface MovieFormState {
   success: boolean;
